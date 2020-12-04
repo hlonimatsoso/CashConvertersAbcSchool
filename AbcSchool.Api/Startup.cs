@@ -1,4 +1,6 @@
+using AbcSchool.Business.Repos;
 using AbcSchool.Data;
+using AbcSchool.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +35,8 @@ namespace AbcSchool.Api
 
             services.AddDbContext<AbcSchoolDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IAbcRepo, AbcSchoolRepo>();
 
             services.AddSwaggerGen(c =>
             {

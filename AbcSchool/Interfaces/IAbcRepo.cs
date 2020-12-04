@@ -2,12 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AbcSchool.Interfaces
 {
-    public interface IAbcRepo<T> where T : class
+    public interface IAbcRepo 
     {
-        IEnumerable<Student> GetStudents();
+        Task<IEnumerable<Student>> GetStudents();
+
+        Task AddStudent(Student student);
 
         IEnumerable<Subject> GetSubjects();
 
