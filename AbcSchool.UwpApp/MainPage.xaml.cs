@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AbcSchool.Interfaces;
+using AbcSchool.UwpApp.Clients;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +24,12 @@ namespace AbcSchool.UwpApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        IAbcSchoolClient client;
         public MainPage()
         {
             this.InitializeComponent();
+            this.client = new AbcSchoolClient();
+            var result = this.client.GetStudents();
         }
     }
 }
