@@ -20,7 +20,7 @@ namespace AbcSchool.UwpApp.Clients
                 {
                     client.BaseAddress = new Uri("http://localhost:5000/api/");
                     //HTTP GET
-                    var responseTask = client.GetAsync("students/students");
+                    var responseTask = client.GetAsync("students");
                     responseTask.Wait();
 
                     var result = responseTask.Result;

@@ -14,24 +14,42 @@ namespace AbcSchool.Api.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
-       private readonly IAbcRepo _db;
-        public StudentsController(IAbcRepo db)
+       private readonly IStudentRepo _db;
+        public StudentsController(IStudentRepo db)
         {
             this._db = db;
         }
 
-        [HttpGet("students")]
+        [HttpGet("")]
         public async Task<IEnumerable<Student>> GetAllStudents()
         {
-            return await this._db.GetStudents();
+            return await this._db.GetAllAsync();
         }
 
-        [HttpPost("student")]
+        [HttpPost("add")]
 
         public async Task AddStudent(Student student)
         {
-            await this._db.AddStudent(student);
+            await this._db.InsertAsync(student);
             
+        }
+
+
+        [HttpPost("update")]
+
+        public void UpdateStudent(Student student)
+        {
+             this._db.Update(student);
+
+        }
+
+
+        [HttpDelete("{id:int}")]
+
+        public async Task DeleteStudent(int id)
+        {
+            await this._db.DeleteAsync(id);
+
         }
     }
 }

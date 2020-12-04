@@ -1,39 +1,49 @@
-﻿using AbcSchool.Data;
-using AbcSchool.Interfaces;
-using AbcSchool.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using AbcSchool.Data;
+//using AbcSchool.Interfaces;
+//using AbcSchool.Models;
+//using Microsoft.EntityFrameworkCore;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace AbcSchool.Business.Repos
-{
-    public class AbcSchoolRepo : IAbcRepo
-    {
+//namespace AbcSchool.Business.Repos
+//{
+//    public class AbcSchoolRepo : IAbcRepo
+//    {
 
-        private readonly AbcSchoolDbContext _db;
+//        private readonly AbcSchoolDbContext _db;
 
-        public AbcSchoolRepo(AbcSchoolDbContext db)
-        {
-            this._db = db;
-        }
+//        public AbcSchoolRepo(AbcSchoolDbContext db)
+//        {
+//            this._db = db;
+//        }
 
-        public async Task AddStudent(Student student)
-        {
-           await this._db.Students.AddAsync(student);
-           await this._db.SaveChangesAsync();
-        }
+//        public async Task AddStudent(Student student)
+//        {
+//           await this._db.Students.AddAsync(student);
+//           await this._db.SaveChangesAsync();
+//        }
 
-        public async Task<IEnumerable<Student>> GetStudents()
-        {
-            return await this._db.Students.ToListAsync();
-        }
+//        public Task DeleteStudent(int studentId)
+//        {
+//            throw new NotImplementedException();
+//        }
 
-        public IEnumerable<Subject> GetSubjects()
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
+//        public async Task<IEnumerable<Student>> GetStudents()
+//        {
+//            return await this._db.Students.ToListAsync();
+//        }
+
+//        public IEnumerable<Subject> GetSubjects()
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public Task UpdateStudent(Student student)
+//        {
+//            throw new NotImplementedException();
+//        }
+//    }
+//}

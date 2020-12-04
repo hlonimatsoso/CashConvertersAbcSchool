@@ -1,5 +1,7 @@
 ﻿using AbcSchool.Interfaces;
+using AbcSchool.Models;
 using AbcSchool.UwpApp.Clients;
+using AbcSchool.UwpApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,11 +27,20 @@ namespace AbcSchool.UwpApp
     public sealed partial class MainPage : Page
     {
         IAbcSchoolClient client;
+
+        public MainPageViewModel MainPageViewModel { get; set; }
         public MainPage()
         {
             this.InitializeComponent();
+            Loaded += MainPage_Loaded;
+        }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
             this.client = new AbcSchoolClient();
-            var result = this.client.GetStudents();
+            this.MainPageViewModel = new MainPageViewModel();
+            this.MainPageViewModel.Students = this.client.GetStudents().Result;
+            this.DataContext = this.MainPageViewModel;
         }
     }
 }

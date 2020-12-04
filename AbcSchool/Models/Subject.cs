@@ -12,5 +12,8 @@ namespace AbcSchool.Models
 
         public string Description { get; set; }
 
+        List<StudentSubjects> Students { get; set; }
+
+
     }
 }

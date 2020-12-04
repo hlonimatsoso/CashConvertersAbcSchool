@@ -7,9 +7,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <!--<Page.DataContext>
+        <local:App 
+    </Page.DataContext>-->
 
     <Grid>
-        <TextBlock>dssad</TextBlock>
+        <ListBox ItemsSource="{Binding Path=Students}">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Surname}"/>
+                        <TextBlock Text="{Binding StudentNumber}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </Page>

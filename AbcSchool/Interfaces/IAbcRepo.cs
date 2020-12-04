@@ -4,13 +4,10 @@ using System.Threading.Tasks;
 
 namespace AbcSchool.Interfaces
 {
-    public interface IAbcRepo 
+    public interface IAbcRepo : IStudentRepo, ISubjectsRepo
     {
-        Task<IEnumerable<Student>> GetStudents();
 
-        Task AddStudent(Student student);
 
-        IEnumerable<Subject> GetSubjects();
 
 
     }
