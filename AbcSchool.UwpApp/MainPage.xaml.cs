@@ -42,5 +42,10 @@ namespace AbcSchool.UwpApp
             this.MainPageViewModel.Students = this.client.GetStudents().Result;
             this.DataContext = this.MainPageViewModel;
         }
+
+        private void Hamburger_Click(object sender, RoutedEventArgs e)
+        {
+            HambergerSplit.IsPaneOpen = !HambergerSplit.IsPaneOpen;
+        }
     }
 }

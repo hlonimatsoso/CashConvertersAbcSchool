@@ -12,18 +12,69 @@
     </Page.DataContext>-->
 
     <Grid>
-        <ListBox ItemsSource="{Binding Path=Students}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}" />
-                        <TextBlock Text="{Binding Surname}"/>
-                        <TextBlock Text="{Binding StudentNumber}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        </Grid.RowDefinitions>
+        <RelativePanel>
+            <Button x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="30" Click="Hamburger_Click"></Button>
+        </RelativePanel>
+        <SplitView x:Name="HambergerSplit" IsPaneOpen="True"
+           DisplayMode="CompactOverlay"
+           OpenPaneLength="296"
+                   Grid.Row="1">
+            <SplitView.Pane>
+                <ListBox>
+                    <ListBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEA8A;" FontSize="30"/>
+                            <TextBlock Margin="20,0,0,0">Home</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8A1;" FontSize="30"/>
+                            <TextBlock Margin="20,0,0,0">Subjects</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8FA;" FontSize="30"/>
+                            <TextBlock Margin="20,0,0,0">Students</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    
+                </ListBox>
+
+            </SplitView.Pane>
+            <SplitView.Content>
+                <StackPanel>
+                    <TextBlock Text="Content"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+
+                    <ListBox ItemsSource="{Binding Path=Students}">
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text="{Binding Surname}"/>
+                                    <TextBlock Text="{Binding StudentNumber}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </StackPanel>
+            </SplitView.Content>
+
+        </SplitView>
 
     </Grid>
+
+
+
 </Page>
