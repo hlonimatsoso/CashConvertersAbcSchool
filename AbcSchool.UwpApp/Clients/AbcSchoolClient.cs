@@ -11,6 +11,11 @@ namespace AbcSchool.UwpApp.Clients
 {
     public class AbcSchoolClient : IAbcSchoolClient
     {
+        public Task<Student> GetStudent(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<Student>> GetStudents()
         {
             List<Student> students = new List<Student>();
@@ -40,9 +45,14 @@ namespace AbcSchool.UwpApp.Clients
             }
             catch (Exception ex)
             {
-
+                // display error
                 throw;
             }
+        }
+
+        public Task<List<Subject>> GetSubjects()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -26,6 +26,12 @@ namespace AbcSchool.Api.Controllers
             return await this._db.GetAllAsync();
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<Student> GetStudent(int id)
+        {
+            return await this._db.GetByIDAsync(id);
+        }
+
         [HttpPost("add")]
 
         public async Task AddStudent(Student student)

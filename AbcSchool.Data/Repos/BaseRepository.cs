@@ -35,6 +35,7 @@ namespace AbcSchool.Data.Repos
         public virtual async Task InsertAsync(T entity)
         {
            await dbSet.AddAsync(entity);
+           await this.context.SaveChangesAsync();
         }
 
         public virtual async Task DeleteAsync(object id)

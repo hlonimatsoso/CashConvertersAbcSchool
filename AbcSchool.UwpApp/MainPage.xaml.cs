@@ -2,6 +2,7 @@
 using AbcSchool.Models;
 using AbcSchool.UwpApp.Clients;
 using AbcSchool.UwpApp.ViewModels;
+using AbcSchool.UwpApp.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,10 +42,31 @@ namespace AbcSchool.UwpApp
             this.MainPageViewModel = new MainPageViewModel();
             this.MainPageViewModel.Students = this.client.GetStudents().Result;
             this.DataContext = this.MainPageViewModel;
+            MainFrame.Navigate(typeof(HomeView));
         }
 
         private void Hamburger_Click(object sender, RoutedEventArgs e)
         {
+            HambergerSplit.IsPaneOpen = !HambergerSplit.IsPaneOpen;
+        }
+
+        private void HomeLink_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(HomeView));
+            HambergerSplit.IsPaneOpen = !HambergerSplit.IsPaneOpen;
+
+        }
+
+
+        private void SubjectLink_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(SubjectsView));
+            HambergerSplit.IsPaneOpen = !HambergerSplit.IsPaneOpen;
+        }
+
+        private void StudentLink_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(StudentsView));
             HambergerSplit.IsPaneOpen = !HambergerSplit.IsPaneOpen;
         }
     }

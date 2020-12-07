@@ -7,10 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <!--<Page.DataContext>
-        <local:App 
-    </Page.DataContext>-->
-
+   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -29,19 +26,21 @@
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEA8A;" FontSize="30"/>
-                            <TextBlock Margin="20,0,0,0">Home</TextBlock>
+                            <HyperlinkButton Name="HomeLink" Click="HomeLink_Click" Margin="20,0,0,0">Home</HyperlinkButton>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel  Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8A1;" FontSize="30"/>
-                            <TextBlock Margin="20,0,0,0">Subjects</TextBlock>
+                            <HyperlinkButton Name="SubjectLink" Click="SubjectLink_Click" Margin="20,0,0,0">Subjects</HyperlinkButton>
+
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8FA;" FontSize="30"/>
-                            <TextBlock Margin="20,0,0,0">Students</TextBlock>
+                            <HyperlinkButton Name="StudentLink" Click="StudentLink_Click" Margin="20,0,0,0">Students</HyperlinkButton>
+
                         </StackPanel>
                     </ListBoxItem>
                     
@@ -49,7 +48,10 @@
 
             </SplitView.Pane>
             <SplitView.Content>
-                <StackPanel>
+                <Frame x:Name="MainFrame">
+                    
+                </Frame>
+                <!--<StackPanel>
                     <TextBlock Text="Content"
                    FontSize="24"
                    VerticalAlignment="Center"
@@ -68,7 +70,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                </StackPanel>
+                </StackPanel>-->
             </SplitView.Content>
 
         </SplitView>
