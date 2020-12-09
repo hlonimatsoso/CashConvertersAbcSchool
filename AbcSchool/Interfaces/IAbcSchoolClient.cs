@@ -13,5 +13,7 @@ namespace AbcSchool.Interfaces
 
         Task<Student> GetStudent(int id);
 
+        Task AddSubject(Subject subject);
+
     }
 }

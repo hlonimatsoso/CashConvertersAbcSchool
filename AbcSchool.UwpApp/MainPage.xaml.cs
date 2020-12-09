@@ -28,7 +28,7 @@ namespace AbcSchool.UwpApp
     public sealed partial class MainPage : Page
     {
         IAbcSchoolClient client;
-
+        
         public MainPageViewModel MainPageViewModel { get; set; }
         public MainPage()
         {
@@ -40,7 +40,13 @@ namespace AbcSchool.UwpApp
         {
             this.client = new AbcSchoolClient();
             this.MainPageViewModel = new MainPageViewModel();
-            this.MainPageViewModel.Students = this.client.GetStudents().Result;
+            
+            AppData.Students = this.client.GetStudents().Result;
+            AppData.Subjects = this.client.GetSubjects().Result;
+
+            this.MainPageViewModel.Students = AppData.Students;
+            this.MainPageViewModel.Subjects = AppData.Subjects;
+
             this.DataContext = this.MainPageViewModel;
             MainFrame.Navigate(typeof(HomeView));
         }
@@ -52,8 +58,8 @@ namespace AbcSchool.UwpApp
 
         private void HomeLink_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(HomeView));
-            HambergerSplit.IsPaneOpen = !HambergerSplit.IsPaneOpen;
+            MainFrame.Navigate(typeof(HomeView),this.MainPageViewModel);
+            HambergerSplit.IsPaneOpen = false;
 
         }
 
@@ -61,13 +67,13 @@ namespace AbcSchool.UwpApp
         private void SubjectLink_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(SubjectsView));
-            HambergerSplit.IsPaneOpen = !HambergerSplit.IsPaneOpen;
+            HambergerSplit.IsPaneOpen = false;
         }
 
         private void StudentLink_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(StudentsView));
-            HambergerSplit.IsPaneOpen = !HambergerSplit.IsPaneOpen;
+            HambergerSplit.IsPaneOpen = false;
         }
     }
 }

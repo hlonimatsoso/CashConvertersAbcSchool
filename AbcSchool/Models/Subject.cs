@@ -6,6 +6,7 @@ namespace AbcSchool.Models
 {
     public class Subject
     {
+
         public String SubjectName { get; set; }
 
         public int SubjectId { get; set; }

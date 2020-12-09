@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AbcSchool.Models;
+using AbcSchool.UwpApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +24,27 @@ namespace AbcSchool.UwpApp.Views
     /// </summary>
     public sealed partial class SubjectsView : Page
     {
+        SubjectsViewModel VM ;
+
         public SubjectsView()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            AppData.RefreshDataAsync().GetAwaiter();
+            this.VM = new SubjectsViewModel( AppData.Subjects);
+            this.DataContext = VM;
+            base.OnNavigatedTo(e);
+        }
+
+        private void AddSubject_Click(object sender, RoutedEventArgs e)
+        {
+            Subject subject = new Subject {SubjectName = this.SubjectName.Text,Description=this.SubjectDescription.Text };
+            AppData.Client.AddSubject(subject).GetAwaiter();
+            AppData.RefreshDataAsync().GetAwaiter();
+
         }
     }
 }

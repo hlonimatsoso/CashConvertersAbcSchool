@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbcSchool.UwpApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,15 @@ namespace AbcSchool.UwpApp.Views
         public HomeView()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            AppData.RefreshDataAsync().GetAwaiter();
+
+            this.DataContext = new HomeViewModel(AppData.Subjects,AppData.Students);
+
+            base.OnNavigatedTo(e);
         }
     }
 }

@@ -6,11 +6,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:data="using:AbcSchool.Models"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center">Subjects</TextBlock>
+        <GridView ItemsSource="{Binding Path=Subjects}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="data:Subject">
+                    <StackPanel>
+                        <TextBlock Text="{Binding SubjectName}"></TextBlock>
+                        <TextBlock Text="{Binding Description}" Width="auto"></TextBlock>
 
-    <Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Subject Name :</TextBlock>
+                <TextBox x:Name="SubjectName"></TextBox>
+            </StackPanel>
 
-        <TextBlock>Subjects</TextBlock>
-
-    </Grid>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Subject Description :</TextBlock>
+                <TextBox x:Name="SubjectDescription"></TextBox>
+            </StackPanel>
+            <Button x:Name="AddSubject" Click="AddSubject_Click">Add Subject</Button>
+        </StackPanel>
+    </StackPanel>
 </Page>
